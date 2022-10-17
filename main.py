@@ -1,16 +1,19 @@
-# This is a sample Python script.
+from setup.model import SimpleNet, test_model, train_model
+from setup.MNISTImageDataset import MNISTImageDataset
+from one_time_split import one_time_split
+from one_time_split_validation_set import one_time_split_with_validation_set
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+import torch
+from sklearn.datasets import load_digits
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+    # load in the data from above
+    digits = load_digits()
+    data = digits.data
+    targets = digits.target
+
+    #one_time_split(data, targets)
+
+    one_time_split_with_validation_set(data, targets)
